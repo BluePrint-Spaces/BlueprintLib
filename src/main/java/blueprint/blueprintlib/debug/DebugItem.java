@@ -97,7 +97,7 @@ public class DebugItem extends Item {
                         0f,
                         10f,
                         100,
-                        new Color(255, 100, 100),
+                        new Color(0, 255, 255),
                         true,
                         true,
                         10f
