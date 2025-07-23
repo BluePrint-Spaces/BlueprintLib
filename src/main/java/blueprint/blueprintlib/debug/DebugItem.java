@@ -1,11 +1,9 @@
 package blueprint.blueprintlib.debug;
 import blueprint.blueprintlib.effects.CircleEffect;
 import blueprint.blueprintlib.effects.ScanSweepEffect;
+import blueprint.blueprintlib.effects.TeslaArcEffect;
 import blueprint.blueprintlib.unused.BeamHandler;
-import blueprint.blueprintlib.util.CircleEffectHandler;
-import blueprint.blueprintlib.util.ScanSweepHandler;
-import blueprint.blueprintlib.util.ScreenShakeHandler;
-import blueprint.blueprintlib.util.VisualEffectHandler;
+import blueprint.blueprintlib.util.*;
 import blueprint.blueprintlib.util.packets.VisualEffectPacket;
 import blueprint.blueprintlib.util.packets.VisualEffectType;
 import blueprint.blueprintlib.util.packets.network.VisualEffectNetwork;
@@ -112,6 +110,22 @@ public class DebugItem extends Item {
                 ));
                 player.sendMessage(Text.literal("§eScanner Test!"), true);
             }
+            case TESLA_TEST -> {
+                TeslaArcHandler.add(new TeslaArcEffect(
+                        new Vec3d(player.getX(), player.getY() + 1.5, player.getZ()),
+                        player.getRotationVec(1.0f),
+                        3.5f,          // length
+                        0.6f,          // max width jitter
+                        Color.CYAN,
+                        12,            // segments
+                        5,             // update interval
+                        true,          // loop
+                        40,            // lifetime if not looping
+                        10,            // strand count
+                        1,             // spacing
+                        0.05f              // line thickness
+                ));
+            }
         }
     }
 
@@ -120,7 +134,8 @@ public class DebugItem extends Item {
         SCREEN_SHAKE,
         SERVER_TEST_1,
         PULSE_TEST,
-        SCAN_TEST;
+        SCAN_TEST,
+        TESLA_TEST;
 
         // Cycle to next
         public DebugMode next() {
