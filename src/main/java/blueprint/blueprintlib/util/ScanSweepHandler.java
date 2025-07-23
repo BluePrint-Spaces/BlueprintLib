@@ -22,4 +22,8 @@ public class ScanSweepHandler {
             return effect.isDead();
         });
     }
+
+    public static void clear() {
+        effects.clear();
+    }
 }

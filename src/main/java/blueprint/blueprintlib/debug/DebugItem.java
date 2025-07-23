@@ -110,6 +110,10 @@ public class DebugItem extends Item {
                 ));
                 player.sendMessage(Text.literal("§eScanner Test!"), true);
             }
+            case CLEAR_EFFECTS -> {
+                EffectManager.clearAllEffects();
+                player.sendMessage(Text.literal("§cCleared all visual effects."), true);
+            }
             case TESLA_TEST -> {
                 TeslaArcHandler.add(new TeslaArcEffect(
                         new Vec3d(player.getX(), player.getY() + 1.5, player.getZ()),
@@ -135,7 +139,8 @@ public class DebugItem extends Item {
         SERVER_TEST_1,
         PULSE_TEST,
         SCAN_TEST,
-        TESLA_TEST;
+        TESLA_TEST,
+        CLEAR_EFFECTS;
 
         // Cycle to next
         public DebugMode next() {

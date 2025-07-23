@@ -20,4 +20,8 @@ public class TeslaArcHandler {
         effects.removeIf(TeslaArcEffect::isDead);
         effects.forEach(TeslaArcEffect::tick);
     }
+
+    public static void clear() {
+        effects.clear();
+    }
 }

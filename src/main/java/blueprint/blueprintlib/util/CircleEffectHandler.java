@@ -20,4 +20,8 @@ public class CircleEffectHandler {
         effects.removeIf(e -> !e.isAlive());
         effects.forEach(CircleEffect::tick);
     }
+
+    public static void clear() {
+        effects.clear();
+    }
 }
