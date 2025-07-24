@@ -92,4 +92,8 @@ public class TeslaArcEffect {
             }
         }
     }
+
+    public Vec3d getStart() {
+        return origin;
+    }
 }
