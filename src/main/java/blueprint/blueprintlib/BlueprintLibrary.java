@@ -1,8 +1,10 @@
 package blueprint.blueprintlib;
 
 import blueprint.blueprintlib.debug.DebugItem;
+import blueprint.blueprintlib.util.TeslaArcHandler;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -31,6 +33,10 @@ public class BlueprintLibrary implements ModInitializer {
 				new Identifier("blueprintlib", "debug_item"),
 				DEBUG_ITEM
 		);
+
+		ServerTickEvents.END_SERVER_TICK.register(server -> {
+			TeslaArcHandler.tick(server);
+		});
 
 		LOGGER.info("Hello Fabric world!");
 	}
