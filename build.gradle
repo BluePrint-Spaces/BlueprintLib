@@ -3,7 +3,7 @@ plugins {
 	id 'maven-publish'
 }
 
-version = 'v1.0.0'
+version = mod_version
 group = 'com.github.Blueprint-Spaces'
 
 base {

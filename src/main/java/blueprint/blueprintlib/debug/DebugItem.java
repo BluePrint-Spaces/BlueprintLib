@@ -150,11 +150,28 @@ public class DebugItem extends Item {
                             0.05f
                     ));
                 }
-
                 player.sendMessage(Text.literal("§aSpawned " + pairList.size() + " Tesla arcs."), true);
             }
         }
     }
+
+    public enum DebugMode {
+        TINT_TEST,
+        SCREEN_SHAKE,
+        SERVER_TEST_1,
+        PULSE_TEST,
+        SCAN_TEST,
+        TESLA_TEST,
+        CLEAR_EFFECTS;
+
+        // Cycle to next
+        public DebugMode next() {
+            DebugMode[] values = values();
+            return values[(this.ordinal() + 1) % values.length];
+        }
+    }
+
+
 
     private NbtCompound toNbt(Vec3d pos) {
         NbtCompound tag = new NbtCompound();
@@ -201,21 +218,5 @@ public class DebugItem extends Item {
 
     private String formatVec(Vec3d vec) {
         return String.format("(%.1f, %.1f, %.1f)", vec.x, vec.y, vec.z);
-    }
-
-    public enum DebugMode {
-        TINT_TEST,
-        SCREEN_SHAKE,
-        SERVER_TEST_1,
-        PULSE_TEST,
-        SCAN_TEST,
-        TESLA_TEST,
-        CLEAR_EFFECTS;
-
-        // Cycle to next
-        public DebugMode next() {
-            DebugMode[] values = values();
-            return values[(this.ordinal() + 1) % values.length];
-        }
     }
 }
